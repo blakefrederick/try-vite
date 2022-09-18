@@ -1,6 +1,8 @@
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import { setupCounter } from './counter.js'
+import markdownIt from "markdown-it"
+import lorem from "./index.md?raw"
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -17,7 +19,9 @@ document.querySelector('#app').innerHTML = `
     <p class="read-the-docs">
       Click on the Vite logo, or don't!
     </p>
+    <div id="lorem-target"></div>
   </div>
 `
 
 setupCounter(document.querySelector('#counter'))
+document.querySelector('#lorem-target').innerHTML = markdownIt().render(lorem)
